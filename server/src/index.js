@@ -11,12 +11,21 @@ app.use(helmet())
 app.use(cors({
     origin: 'http://localhost:3000'
 }));
+//app.use(bodyParser.urlencoded({ extended: false }));
+
 hanzi.start();
 
 app.get('/',(req,res)=>{
-    res.send(hanzi.definitionLookup('爱'))
+    res.json(hanzi.definitionLookup('爱'))
 });
 
+app.get('/word',(req,res)=>{
+    if(!req.query.char){
+        res.send("Error: No character selected");
+    }
+    const char = req.query.char;
+    res.json(hanzi.definitionLookup(char));
+});
 
 
 
