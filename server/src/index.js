@@ -24,7 +24,20 @@ app.get('/word',(req,res)=>{
         res.send("Error: No character selected");
     }
     const char = req.query.char;
-    res.json(hanzi.definitionLookup(char));
+    let chardef = hanzi.definitionLookup(char);
+    if(typeof chardef == 'undefined'){
+        let errorReturn = [
+            {
+                "error": "T",
+                "traditional": "NULL",
+                "simplified": "NULL",
+                "pinyin": "NULL",
+                "definition": "NULL"
+            }
+        ]
+        res.json(errorReturn)
+    }
+    res.json(chardef);
 });
 
 

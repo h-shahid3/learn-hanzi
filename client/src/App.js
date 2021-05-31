@@ -15,7 +15,16 @@ const App = () =>{
     let defObj = JSON.parse(tmp);
     return [defObj];
   });//Definition and Description
-  console.log(defs)
+  useEffect(()=>{
+    console.log("In UseEffect");
+    let writer = HanziWriter.create('character-target-div', inputChar, {
+      width: 500,
+      height: 500,
+      padding: 5,
+      delayBetweenStrokes: 500
+    });
+    writer.loopCharacterAnimation();
+  },[])
   //[{definition:"",pinyin:"",Simplified:"",Traditional:""}]
   const formSubmitted = async (event) =>{
     event.preventDefault();
@@ -23,12 +32,23 @@ const App = () =>{
     definitions.forEach((item,index)=>{
       definitions[index] = JSON.parse(JSON.stringify(definitions[index]));
     })
+    if(definitions[0].error){
+      console.log("caught");
+      window.alert("The Input Character is invalid. Please input a single character only in either Simplified or Traditional Chinese.");
+      return;
+    }
     setDefs(()=>{
       defs = definitions.slice()
     })
-
-    console.log(defs)
+    document.getElementById('character-target-div').innerHTML=''; // Causes the div to be empty to prepare for new character
     let writer = HanziWriter.create('character-target-div', inputChar, {
+      onLoadCharDataSuccess: function(data) {
+        console.log('Successfully found the character!');
+      },
+      onLoadCharDataError: function(reason) {
+        console.log('Oh No! Something went wrong when finding the character! :(');
+        window.alert("The Input Character is invalid. Please input a single character only in either Simplified or Traditional Chinese.");
+      },
       width: 500,
       height: 500,
       padding: 5,
@@ -39,15 +59,7 @@ const App = () =>{
   const handleInputCharChange = useCallback((event) =>{
     setInputChar(event.target.value);
   },[]);
-  useEffect(()=>{
-    let writer = HanziWriter.create('character-target-div', inputChar, {
-      width: 500,
-      height: 500,
-      padding: 5,
-      delayBetweenStrokes: 500
-    });
-    writer.loopCharacterAnimation();
-  },[])
+
   return(
     <div>
       <nav className="navbar navbar-expand-sm bg-light navbar-dark justify-content-center">
