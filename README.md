@@ -20,11 +20,13 @@ To run this project, first clone the repo. Navigate to both the client and serve
 ```
 $ cd learn-hanzi
 $ cd server
+$ npm install
 $ npm run start
 ```
 ```
 $ cd learn-hanzi
 $ cd client
+$ npm install
 $ npm run start
 ```
 ## Final Result
