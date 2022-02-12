@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/src/index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build && cd .."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/h-shahid3/learn-hanzi.git"
+    "url": "https://github.com/h-shahid3/learn-hanzi.git"
   },
   "keywords": [],
   "author": "",
