@@ -8,7 +8,11 @@ const hanzi = require('hanzi')
 const middlewares = require('./middlewares')
 
 app.use(morgan('common'));
-app.use(helmet())
+app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+);
 app.use(cors({
     origin: 'http://localhost:3000'
 }));
