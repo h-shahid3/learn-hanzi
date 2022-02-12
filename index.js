@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const app = express();
 const helmet = require('helmet');
 const cors = require('cors');
+const path = require('path');
 const hanzi = require('hanzi')
 const middlewares = require('./middlewares')
 
@@ -12,6 +13,7 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 //app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 hanzi.start();
 
