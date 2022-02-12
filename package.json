@@ -4,7 +4,7 @@
   "description": "stuff describing this",
   "main": "index.js",
   "scripts": {
-    "start": "node server/src/index.js",
+    "start": "node /server/src/index.js",
     "heroku-postbuild": "cd client && npm install && npm run build && cd .."
   },
   "repository": {
