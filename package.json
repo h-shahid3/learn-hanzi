@@ -1,0 +1,21 @@
+{
+  "name": "learn-hanzi",
+  "version": "1.0.0",
+  "description": "stuff describing this",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h-shahid3/learn-hanzi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h-shahid3/learn-hanzi/issues"
+  },
+  "homepage": "https://github.com/h-shahid3/learn-hanzi#readme"
+}
