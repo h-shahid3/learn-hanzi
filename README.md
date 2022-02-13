@@ -16,10 +16,9 @@ This website is created using:
 * eslint version: 7.26.0
 	
 ## Setup
-To run this project, first clone the repo. Navigate to both the client and server folders and run npm start to host the website locally.
+To run this project locally, first clone the repo. Navigate to both the client and root folders and run npm start to host the website locally.
 ```
 $ cd learn-hanzi
-$ cd server
 $ npm install
 $ npm run start
 ```
